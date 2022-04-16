@@ -4,18 +4,23 @@
 
 tasks:
   - name: install pio
-    init: python3 -c "$(curl -fsSL https://raw.githubusercontent.com/platformio/platformio/master/scripts/get-platformio.py)"
-    command: export PATH=$PATH:/home/gitpod/.platformio/penv/bin
+    init: |
+      python3 -c "$(curl -fsSL https://raw.githubusercontent.com/platformio/platformio/master/scripts/get-platformio.py)"
+    command: |
+      export PATH=$PATH:/home/gitpod/.platformio/penv/bin
       
   - name: install docker
-    init: apt-get Install -y docker
-    command: echo $DOCKER_TOKEN | docker login -u albertzerok
+    init: |
+      apt-get Install -y docker
+    command: |
+      echo $DOCKER_TOKEN | docker login -u albertzerok
   
   - name: inStall aws cli
     init: |
       curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
       unzip awscliv2.zip
-    command: ./aws/install
+    command: |
+      ./aws/install
 
   - name: install ESP32-IDF
     init: |
@@ -27,6 +32,7 @@ tasks:
       . ./install.sh esp32,esp32s2,esp32s3
       . ~/esp/esp-idf/export.sh
       alias build='idf.py build'
+      
 vscode:
   extensions:
     - llvm-vs-code-extensions.vscode-clangd
