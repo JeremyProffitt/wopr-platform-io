@@ -3,10 +3,13 @@
 # and commit this file to your remote git repository to share the goodness with others.
 
 tasks:
-  - name: install pio
-    init: python3 -c "$(curl -fsSL https://raw.githubusercontent.com/platformio/platformio/master/scripts/get-platformio.py)"
+  - name: install pio & aws cli
+    init: |
+      pip install -U platformio
+      curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+      unzip awscliv2.zip
     command: |
-      export PATH=$PATH:/home/gitpod/.platformio/penv/bin
+      ./aws/install
       
 #  - name: install docker
 #    init: |
