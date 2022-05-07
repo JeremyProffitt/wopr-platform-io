@@ -5,11 +5,13 @@
 tasks:
   - name: install pio & aws cli
     init: |
-      pip install -U platformio
+      echo hello
+      echo hello
+    command: |
+      sudo pip install -U platformio
       curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
       unzip awscliv2.zip
-    command: |
-      ./aws/install
+      sudo ./aws/install
       
 #  - name: install docker
 #    init: |
